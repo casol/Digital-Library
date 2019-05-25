@@ -14,12 +14,24 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13)
     genre = models.ManyToManyField('Genre', help_text='Choose a book genre')
     pages = models.IntegerField(blank=True, null=True)
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
 
-    def __str__(self):
-        return self.title
+    def display_genre(self):
+        """Creates a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join([genre.category for genre in self.genre.all()])
+
+    display_genre.short_description = 'Genre'
+
+    def display_authors(self):
+        return ', '.join(author.last_name for author in self.authors.all())        
+
+    display_genre.short_description = 'Authors'
 
     def get_absolute_url(self):
         return reverse('book-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return self.title   
 
 
 class Author(models.Model):
@@ -75,3 +87,11 @@ class BookInstance(models.Model):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
 
+class Language(models.Model):
+    """Model representing a Language (e.g. English, French, Japanese, etc.)"""
+    name = models.CharField(max_length=200,
+                            help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
+
+    def __str__(self):
+        """String for representing the Model object (in Admin site etc.)"""
+        return self.name
