@@ -13,11 +13,25 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
 
 
+class BooksInstanceInline(admin.TabularInline):
+    model = BookInstance
+    extra = 1
+
+
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'display_authors', 'display_genre')
-
+    inlines = [BooksInstanceInline]
 
 @admin.register(BookInstance) 
 class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ('status', 'due_back')
+
+    fieldsets = (
+        (None, {
+            'fields': ('book', 'imprint', 'id')
+        }),
+        ('Availability', {
+            'fields': ('status', 'due_back')
+        }),
+    )
