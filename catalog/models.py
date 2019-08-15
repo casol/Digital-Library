@@ -1,13 +1,16 @@
+import uuid
 from django.db import models
 from django.urls import reverse
-import uuid
 
-class Book(models.Model): 
+
+class Book(models.Model):
+    """Book."""
+
     title = models.CharField(max_length=200, blank=False)
     authors = models.ManyToManyField('Author')
     subtitle = models.CharField(max_length=200, blank=True)
     publisher = models.CharField(max_length=100, blank=True)
-    description = models.TextField(max_length=1000,                                    
+    description = models.TextField(max_length=1000,                                  
                                    help_text='Enter a brief description of the book')
     published_date = models.DateField(null=True, blank=True)
     # https://en.wikipedia.org/wiki/International_Standard_Book_Number
@@ -31,7 +34,7 @@ class Book(models.Model):
         return reverse('book-detail', args=[str(self.id)])
 
     def __str__(self):
-        return self.title   
+        return self.title
 
 
 class Author(models.Model):
