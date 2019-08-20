@@ -1,0 +1,16 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+    <h1>Book List</h1>
+    {% if book_list %}
+    <ul>
+        {% for book in book_list %}
+        <li>
+            </p>{{ book.title }} {% for author in book.authors.all %}({{ author }}){% endfor %}</p>    
+        </li>
+    </ul>
+        {% endfor %}
+    {% else %}
+        <p>the library has no books yet.</p>
+    {% endif %}
+{% endblock %}

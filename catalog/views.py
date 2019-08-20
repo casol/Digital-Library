@@ -28,7 +28,21 @@ def home(request):
     }
 
     # Render the HTML template index.html with the data in the context variable
-    return render(request, 'home.html', context=context)
+    return render(request, 'catalog/home.html', context=context)
+
+def books(request):
+    """Return the list of all books."""
+
+    # Get list of all books
+    book_list = Book.objects.all()
+    return render(
+        request,
+        'catalog/book_list.html',        
+        {
+            'book_list': book_list,
+        }
+    )
+
 
 
 def hello_there(request, name):
