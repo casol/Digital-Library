@@ -1,13 +1,77 @@
+from datetime import date
 from django.test import TestCase
 
-from catalog.models import Author
+from catalog.models import Author, Book, Genre, Language
 
 class BookModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Author.objects.create(first_name='John', last_name='Rambo')
-        Book.objects.create(title='TestBook', authors=author = Author.objects.get(id=1), subtitle='The best book for testing',
-        publisher='BookPrint', description='TestTestTest', publish_date=,isbn=,genre=,pages=,language=)
+        """Setup a book with related """
+        author = Author.objects.create(first_name='John', last_name='Rambo')        
+        genre = Genre.objects.create(category='Novel')
+        Language.objects.create(name='English')        
+        language = Language.objects.get(id=1)
+        book = Book.objects.create(title='TestBook',
+        subtitle='The best book for testing', publisher='BookPrint',
+        description='TestTestTest', published_date=date.today(),
+        isbn='978-1541392304', pages=233, language=language)
+        book.authors.add(author)
+        book.genre.add(genre)
+
+    def test_title_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('title').verbose_name
+        self.assertEqual(field_label, 'title')
+    
+    def test_authors_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('authors').verbose_name
+        self.assertEqual(field_label, 'authors')
+    
+    def test_subtile_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('subtitle').verbose_name
+        self.assertEqual(field_label, 'subtitle')
+    
+    def test_publisher_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('publisher').verbose_name
+        self.assertEqual(field_label, 'publisher')
+    
+    def test_description_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('description').verbose_name
+        self.assertEqual(field_label, 'description')
+    
+    def test_published_date_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('published_date').verbose_name
+        self.assertEqual(field_label, 'published date') 
+
+    def test_isbn_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('isbn').verbose_name
+        self.assertEqual(field_label, 'ISBN')
+
+    def test_genre_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('genre').verbose_name
+        self.assertEqual(field_label, 'genre')
+
+    def test_pages_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('pages').verbose_name
+        self.assertEqual(field_label, 'pages')
+
+    def test_language_label(self):
+        book = Book.objects.get(id=1)
+        field_label = book._meta.get_field('language').verbose_name
+        self.assertEqual(field_label, 'language')
+
+    def test_title_max_length(self):
+        book = Book.objects.get(id=1)
+        max_length = book._meta.get_field('title').max_length
+        self.assertEquals(max_length, 200)
 
 class AuthorModelTest(TestCase):
     @classmethod
