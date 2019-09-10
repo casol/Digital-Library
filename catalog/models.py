@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 
 class Book(models.Model):
@@ -18,7 +19,8 @@ class Book(models.Model):
     genre = models.ManyToManyField('Genre', help_text='Choose a book genre')
     pages = models.IntegerField(blank=True, null=True)
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
-
+    slug = models.SlugField(help_text='A slug is a short label, used in URLs')
+  
     def display_genre(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
         return ', '.join([genre.category for genre in self.genre.all()])

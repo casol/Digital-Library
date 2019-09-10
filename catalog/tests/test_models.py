@@ -73,6 +73,17 @@ class BookModelTest(TestCase):
         max_length = book._meta.get_field('title').max_length
         self.assertEquals(max_length, 200)
 
+    def test_subtitle_max_length(self):
+        book = Book.objects.get(id=1)
+        max_length = book._meta.get_field('subtitle').max_length
+        self.assertEquals(max_length,200)
+    
+    def test_publisher_max_length(self):
+        book = Book.objects.get(id=1)
+        max_length = book._meta.get_field('publisher').max_length
+        self.assertEquals(max_length, 100)
+        
+
 class AuthorModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):

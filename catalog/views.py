@@ -17,7 +17,7 @@ def home(request):
     # Available books (status = 'a')
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
     
-    # The 'all()' is implied by default  
+    # The 'all()' is implied by default
     num_authors = Author.objects.count()
     
     context = {
@@ -37,7 +37,7 @@ def books(request):
     book_list = Book.objects.all()
     return render(
         request,
-        'catalog/book_list.html',        
+        'catalog/book_list.html',
         {
             'book_list': book_list,
         }
