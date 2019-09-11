@@ -3,6 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 
 from catalog.models import Book, Author, BookInstance, Genre, Language
 
@@ -40,5 +41,16 @@ def books(request):
         'catalog/book_list.html',
         {
             'book_list': book_list,
+        }
+    )
+
+def book_detail(request, pk, slug=None):
+    """View function for details of the specific book."""
+    book = get_object_or_404(Book, pk=pk)
+    return render(
+        request,
+        'catalog/book_detail.html',
+        {
+            'book': book,
         }
     )

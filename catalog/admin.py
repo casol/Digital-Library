@@ -14,6 +14,9 @@ class BooksInline(admin.TabularInline):
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
     inlines = [BooksInline]
+    # Set prepopulated_fields to a dictionary mapping field
+    # names to the fields it should prepopulate from:
+    prepopulated_fields = {"slug": ("first_name", "last_name")}
 
 # The admin interface has the ability to edit models on the same page
 class BooksInstanceInline(admin.TabularInline):

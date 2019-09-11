@@ -11,7 +11,7 @@ class Book(models.Model):
     authors = models.ManyToManyField('Author')
     subtitle = models.CharField(max_length=200, blank=True)
     publisher = models.CharField(max_length=100, blank=True)
-    description = models.TextField(max_length=1000,                                  
+    description = models.TextField(max_length=1000,                                 
                                    help_text='Enter a brief description of the book')
     published_date = models.DateField(null=True, blank=True)
     # https://en.wikipedia.org/wiki/International_Standard_Book_Number
@@ -20,7 +20,7 @@ class Book(models.Model):
     pages = models.IntegerField(blank=True, null=True)
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(help_text='A slug is a short label, used in URLs')
-  
+
     def display_genre(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
         return ', '.join([genre.category for genre in self.genre.all()])
@@ -33,7 +33,7 @@ class Book(models.Model):
     display_genre.short_description = 'Authors'
 
     def get_absolute_url(self):
-        return reverse('book-detail', args=[str(self.id)])
+        return reverse('book_detail', args=[str(self.id), self.slug])
 
     def __str__(self):
         return self.title
@@ -44,6 +44,18 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    slug = models.SlugField(blank=False, null=True,
+                            help_text='A slug is a short label, used in URLs')
+
+    # Overide a save method to update slug for all future records
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.first_name, self.last_name)
+    #     super(Author, self).save(*args, **kwargs)
+    # To generate a slug in existing table
+    # >>> from django.template.defaultfilters import slugify
+    # >>> for obj in MyModel.objects.all():
+    # ...     obj.slug = slugify(obj.title)
+    # ...     obj.save()
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -52,7 +64,7 @@ class Author(models.Model):
         return reverse('author-detail', args=[str(self.id)])
 
     def __str__(self):
-        return f'{self.last_name}, {self.first_name}'
+        return f'{self.first_name} {self.last_name}'
 
 #class Isbn(model.Model):
 class Genre(models.Model):
