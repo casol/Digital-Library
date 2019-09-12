@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Title: {{ book.title }}</h1>
   <p><strong>Subtitle:</strong> {{ book.subtitle }}</p>  
-  <p><strong>Author:</strong> <a href="">{% for author in book.authors.all %}{{ author }}{% endfor %}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Author:</strong> {% for author in book.authors.all %}<a href="{{ author.get_absolute_url }}">{{ author }}{% if not forloop.last %}, {% endif %}{% endfor %}</a></p> <!-- author detail link not yet defined -->
   
   <p><strong>Summary:</strong> {{ book.publisher }}</p>
   <p><strong>ISBN:</strong> {{ book.isbn }}</p> 

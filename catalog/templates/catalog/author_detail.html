@@ -1,0 +1,15 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+  <h1>{{ author }}</h1>
+  <h3>Books</h3> 
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{{ book.get_absolute_url }}"><strong>{{ book }}</strong></a>
+                <p>{{ book.description|truncatewords:70 }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

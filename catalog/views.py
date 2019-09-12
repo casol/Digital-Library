@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
@@ -46,11 +46,48 @@ def books(request):
 
 def book_detail(request, pk, slug=None):
     """View function for details of the specific book."""
-    book = get_object_or_404(Book, pk=pk)
+    book = get_object_or_404(Book, pk=pk)    
+    # if slug in url is not correct let Django   
+    # calculate the canonical URL for an object
+    if slug != book.slug:
+        return redirect(book.get_absolute_url())
+        
     return render(
         request,
         'catalog/book_detail.html',
         {
             'book': book,
+        }
+    )
+
+def authors(request):
+    """Return the list of all authors."""
+
+    author_list = Author.objects.all()
+    return render(
+        request,
+        'catalog/author_list.html',
+        {
+            'author_list': author_list,
+        }
+    )
+
+
+def author_detail(request, pk, slug=None):
+    """View function for author details."""
+
+    author = get_object_or_404(Author, pk=pk)
+    books = author.book_set.all()
+    
+    # if slug in url is not correct let Django   
+    # calculate the canonical URL for an object
+    if slug != author.slug:
+        return redirect(author.get_absolute_url())
+    return render(
+        request,
+        'catalog/author_detail.html',
+        {
+            'author': author,
+            'books': books,
         }
     )

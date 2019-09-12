@@ -6,7 +6,7 @@
     <ul>
         {% for book in book_list %}
         <li>
-            <a href="{{ book.get_absolute_url }}">{{ book.title }} {% for author in book.authors.all %}({{ author }}){% endfor %}</a>   
+            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({% for author in book.authors.all %}<a href="{{ author.get_absolute_url }}">{{ author }}{% if not forloop.last %}, {% endif %}</a> {% endfor %})
         </li>
     </ul>
         {% endfor %}
