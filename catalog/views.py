@@ -29,7 +29,7 @@ def home(request):
     }
 
     # Render the HTML template index.html with the data in the context variable
-    return render(request, 'catalog/home.html', context=context)
+    return render(request, 'catalog/home2.html', context=context)
 
 def books(request):
     """Return the list of all books."""
