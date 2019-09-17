@@ -1,0 +1,92 @@
+[
+{
+    "model": "catalog.bookinstance",
+    "pk": "28cd7070-0819-440e-a8f2-5403f80b1d8b",
+    "fields": {
+        "book": 7,
+        "imprint": "Crown",
+        "due_back": "2019-11-21",
+        "status": "o"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "58814038-baae-41fc-9722-99c97cd7ad04",
+    "fields": {
+        "book": 7,
+        "imprint": "Crown",
+        "due_back": null,
+        "status": "a"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "5faed28e-72dc-4321-8005-36b627aba873",
+    "fields": {
+        "book": 2,
+        "imprint": "swiat ksiazki",
+        "due_back": null,
+        "status": "a"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "70159572-2665-4ab8-accb-bb7b34faa864",
+    "fields": {
+        "book": 6,
+        "imprint": "Houghton Mifflin Harcourt",
+        "due_back": null,
+        "status": "a"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "83aeb85b-01c8-4d00-b43a-d562843bcf93",
+    "fields": {
+        "book": 1,
+        "imprint": "Broadway Books",
+        "due_back": null,
+        "status": "r"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "befaac36-5252-4f79-a607-e3bddba925c1",
+    "fields": {
+        "book": 3,
+        "imprint": "Book Company",
+        "due_back": null,
+        "status": "a"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "c71faa29-4c5e-4320-9b75-3fdfbc1a27d5",
+    "fields": {
+        "book": 3,
+        "imprint": "Book Company",
+        "due_back": null,
+        "status": "a"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "ebf5c08a-19cf-459f-ba4b-ede1b5a04479",
+    "fields": {
+        "book": 5,
+        "imprint": "Penguin",
+        "due_back": "2019-07-01",
+        "status": "o"
+    }
+},
+{
+    "model": "catalog.bookinstance",
+    "pk": "f0237199-2fa7-4cd3-b51c-e75cc65db1df",
+    "fields": {
+        "book": 1,
+        "imprint": "Broadway Books",
+        "due_back": null,
+        "status": "a"
+    }
+}
+]

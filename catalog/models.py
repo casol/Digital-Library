@@ -68,6 +68,7 @@ class Author(models.Model):
 
 #class Isbn(model.Model):
 class Genre(models.Model):
+    """Model representing a book genre."""
     category = models.CharField(max_length=200, help_text='Enter a book genre')
 
     def __str__(self):

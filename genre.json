@@ -1,0 +1,44 @@
+[
+{
+    "model": "catalog.genre",
+    "pk": 1,
+    "fields": {
+        "category": "Biography & Autobiography"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 2,
+    "fields": {
+        "category": "Fiction"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 3,
+    "fields": {
+        "category": "Fantasy & Magic"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 4,
+    "fields": {
+        "category": "Science Fiction"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 5,
+    "fields": {
+        "category": "Action & Adventure"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 6,
+    "fields": {
+        "category": "History"
+    }
+}
+]

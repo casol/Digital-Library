@@ -1,0 +1,155 @@
+[
+{
+    "model": "catalog.book",
+    "pk": 1,
+    "fields": {
+        "title": "American Snipers",
+        "subtitle": "The Autobiography of the Most Lethal Sniper in U.S. Military History",
+        "publisher": "K.A. Harrison",
+        "description": "The #1 New York Times bestselling memoir of U.S. Navy Seal Chris Kyle, and the source for Clint Eastwood\u2019s blockbuster movie which was nominated for six academy awards, including best picture. From 1999 to 2009, U.S. Navy SEAL Chris Kyle recorded the most career sniper kills in United States military history. His fellow American warriors, whom he protected with deadly precision from rooftops and stealth positions during the Iraq War, called him \u201cThe Legend\u201d; meanwhile, the enemy feared him so much they named him al-Shaitan (\u201cthe devil\u201d) and placed a bounty on his head. Kyle, who was tragically killed in 2013, writes honestly about the pain of war\u2014including the deaths of two close SEAL teammates\u2014and in moving first-person passages throughout, his wife, Taya, speaks openly about the strains of war on their family, as well as on Chris. Gripping and unforgettable, Kyle\u2019s masterful account of his extraordinary battlefield experiences ranks as one of the great war memoirs of all time.",
+        "published_date": "2012-01-03",
+        "isbn": "9780062082374",
+        "pages": 448,
+        "language": 1,
+        "slug": "american-snipers",
+        "authors": [
+            3,
+            1,
+            2
+        ],
+        "genre": [
+            1
+        ]
+    }
+},
+{
+    "model": "catalog.book",
+    "pk": 2,
+    "fields": {
+        "title": "Pan raczy \u017cartowa\u0107, panie Feynman!",
+        "subtitle": "",
+        "publisher": "",
+        "description": "Wymaga troch\u0119 magii, \u017ceby nauki \u015bcis\u0142e wydawa\u0142y si\u0119 takie rozrywkowe, wci\u0105gaj\u0105ce i proste jak u Feynmana. Niezale\u017cnie od tego, czy czytacie \u201ePan raczy \u017cartowa\u0107, panie Feynman!\u201d po raz pierwszy czy pi\u0105ty, mam nadziej\u0119, \u017ce sprawi wam to nie mniejsz\u0105 przyjemno\u015b\u0107 ni\u017c mnie. Richard P. Feynman\u2013 laureat Nagrody Nobla i jeden z najgenialniejszych fizyk\u00f3w w dziejach w brawurowy spos\u00f3b opowiada o swoim niezwyk\u0142ym \u017cyciu. Nie tylko przedstawia kulisy prac nad budow\u0105 bomby atomowej i tajemnicami materii, ale te\u017c ujawnia si\u0119 jako spec od otwierania zamk\u00f3w szyfrowych i mistrz gry na bongosach. Feynman opisuje spotkanie z Einsteinem, walki z rz\u0105dow\u0105 biurokracj\u0105, codzienne \u017cycie fizyk\u00f3w w o\u015brodku badawczym w Los Alamos i ich flirty z tancerkami w Las Vegas.",
+        "published_date": "2018-10-31",
+        "isbn": "9788324056224",
+        "pages": 461,
+        "language": 2,
+        "slug": "pan-raczy-zartowac-panie-feynman",
+        "authors": [
+            4
+        ],
+        "genre": [
+            1
+        ]
+    }
+},
+{
+    "model": "catalog.book",
+    "pk": 3,
+    "fields": {
+        "title": "The Hobbit",
+        "subtitle": "",
+        "publisher": "Houghton Mifflin Harcourt",
+        "description": "A great modern classic and the prelude to The Lord of the Rings. Bilbo Baggins is a hobbit who enjoys a comfortable, unambitious life, rarely traveling any farther than his pantry or cellar. But his contentment is disturbed when the wizard Gandalf and a company of dwarves arrive on his doorstep one day to whisk him away on an adventure. They have launched a plot to raid the treasure hoard guarded by Smaug the Magnificent, a large and very dangerous dragon. Bilbo reluctantly joins their quest, unaware that on his journey to the Lonely Mountain he will encounter both a magic ring and a frightening creature known as Gollum. \u201cA glorious account of a magnificent adventure, filled with suspense and seasoned with a quiet humor that is irresistible . . . All those, young or old, who love a fine adventurous tale, beautifully told, will take The Hobbit to their hearts.\u201d \u2013 New York Times Book Review",
+        "published_date": "2012-02-15",
+        "isbn": "9780547951973",
+        "pages": 288,
+        "language": 1,
+        "slug": "the-hobbit",
+        "authors": [
+            5
+        ],
+        "genre": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "catalog.book",
+    "pk": 4,
+    "fields": {
+        "title": "The Martian",
+        "subtitle": "",
+        "publisher": "Random House",
+        "description": "Robinson Crusoe on Mars **Andy Weir's second novel Artemis, a high concept thriller set on the moon, is out now** A survival story for the 21st century and the international bestseller behind the major film from Ridley Scott starring Matt Damon and Jessica Chastain. I\u2019m stranded on Mars. I have no way to communicate with Earth. I\u2019m in a Habitat designed to last 31 days. If the Oxygenator breaks down, I\u2019ll suffocate. If the Water Reclaimer breaks down, I\u2019ll die of thirst. If the Hab breaches, I\u2019ll just kind of explode. If none of those things happen, I\u2019ll eventually run out of food and starve to death. So yeah. I\u2019m screwed. Andy Weir's second novel Artemis is now available",
+        "published_date": "2014-02-13",
+        "isbn": "9781448177202",
+        "pages": 384,
+        "language": 1,
+        "slug": "the-martian",
+        "authors": [
+            6
+        ],
+        "genre": [
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "catalog.book",
+    "pk": 5,
+    "fields": {
+        "title": "Blind Man's Bluff",
+        "subtitle": "",
+        "publisher": "PublicAffairs",
+        "description": "Over the course of five years, investigative reporters Sherry Sontag and Chris Drew interviewed hundreds of men who had never spoken about their underwater lives\u2014not even to their wives and children. They uncovered a wealth of classified information: the tapping of undersea Soviet telephone cables, the stealing of Soviet weapons, the tragic collisions of enemy submarines. They tell of medals awarded in secret and deaths disguised with disinformation. Blind Man's Bluff is a critical work of history that reads with all the excitement of a Tom Clancy novel and all the tragedy of Das Boot.",
+        "published_date": "2008-03-04",
+        "isbn": "9781586486785",
+        "pages": 400,
+        "language": 1,
+        "slug": "blind-mans-bluff",
+        "authors": [
+            8,
+            7
+        ],
+        "genre": [
+            6
+        ]
+    }
+},
+{
+    "model": "catalog.book",
+    "pk": 6,
+    "fields": {
+        "title": "The Lord of the Rings",
+        "subtitle": "One Volume",
+        "publisher": "Houghton Mifflin Harcourt",
+        "description": "One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them. In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins From Sauron's fastness in the Dark Tower of Mordor, his power spread far and wide. Sauron gathered all the Great Rings to him, but always he searched for the One Ring that would complete his dominion. When Bilbo reached his eleventy-first birthday he disappeared, bequeathing to his young cousin Frodo the Ruling Ring and a perilous quest: to journey across Middle-earth, deep into the shadow of the Dark Lord, and destroy the Ring by casting it into the Cracks of Doom.",
+        "published_date": null,
+        "isbn": "9780547951942",
+        "pages": 1216,
+        "language": 1,
+        "slug": "the-lord-of-the-rings",
+        "authors": [
+            5
+        ],
+        "genre": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "catalog.book",
+    "pk": 7,
+    "fields": {
+        "title": "Becoming",
+        "subtitle": "",
+        "publisher": "Crown",
+        "description": "An intimate, powerful, and inspiring memoir by the former First Lady of the United. In a life filled with meaning and accomplishment, Michelle Obama has emerged as one of the most iconic and compelling women of our era. As First Lady of the United States of America\u2014the first African American to serve in that role\u2014she helped create the most welcoming and inclusive White House in history, while also establishing herself as a powerful advocate for women and girls in the U.S. and around the world, dramatically changing the ways that families pursue healthier and more active lives, and standing with her husband as he led America through some of its most harrowing moments. Along the way, she showed us a few dance moves, crushed Carpool Karaoke, and raised two down-to-earth daughters.",
+        "published_date": "2018-11-13",
+        "isbn": "9781524763152",
+        "pages": 448,
+        "language": 1,
+        "slug": "becoming",
+        "authors": [
+            9
+        ],
+        "genre": [
+            1
+        ]
+    }
+}
+]

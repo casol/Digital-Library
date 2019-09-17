@@ -1,0 +1,101 @@
+[
+{
+    "model": "catalog.author",
+    "pk": 1,
+    "fields": {
+        "first_name": "Chris",
+        "last_name": "Kyle",
+        "date_of_birth": "1974-04-08",
+        "date_of_death": "2012-02-02",
+        "slug": "chris-kyle"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 2,
+    "fields": {
+        "first_name": "Scott",
+        "last_name": "McEwen",
+        "date_of_birth": null,
+        "date_of_death": null,
+        "slug": "scott-mcewen"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 3,
+    "fields": {
+        "first_name": "Jim",
+        "last_name": "DeFelice",
+        "date_of_birth": null,
+        "date_of_death": null,
+        "slug": "jim-defelice"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 4,
+    "fields": {
+        "first_name": "Feynman",
+        "last_name": "Richard",
+        "date_of_birth": "1918-05-11",
+        "date_of_death": "1988-02-15",
+        "slug": "feynman-richard"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 5,
+    "fields": {
+        "first_name": "J.R.R",
+        "last_name": "Tolkien",
+        "date_of_birth": "1982-01-03",
+        "date_of_death": "1973-09-02",
+        "slug": "jrr-tolkien"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 6,
+    "fields": {
+        "first_name": "Andy",
+        "last_name": "Weir",
+        "date_of_birth": null,
+        "date_of_death": null,
+        "slug": "andy-weir"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 7,
+    "fields": {
+        "first_name": "Sherry",
+        "last_name": "Sontag",
+        "date_of_birth": null,
+        "date_of_death": null,
+        "slug": "sherry-sontag"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 8,
+    "fields": {
+        "first_name": "Christoper",
+        "last_name": "Drew",
+        "date_of_birth": null,
+        "date_of_death": null,
+        "slug": "christoper-drew"
+    }
+},
+{
+    "model": "catalog.author",
+    "pk": 9,
+    "fields": {
+        "first_name": "Michelle",
+        "last_name": "Obama",
+        "date_of_birth": "1964-01-17",
+        "date_of_death": null,
+        "slug": "michelle-obama"
+    }
+}
+]
