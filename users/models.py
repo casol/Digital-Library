@@ -20,12 +20,10 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', False)
-        extra_fields.setdefault('is_superuser', False)
-        return self._create_user(email, password, **extra_fields)
-
     def create_superuser(self, email, password, **extra_fields):
+        """
+        Creates and saves a superuser with the given email and password.
+        """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -45,14 +43,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
 
     email = models.EmailField(max_length=150, unique=True, error_messages={
-            'unique': ("A user with that username already exists."),
+        'unique': ("A user with that username already exists."),
         },)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True, help_text=(
-            'Designates whether this user should be treated as active. '
-            'Unselect this instead of deleting accounts.'
+        'Designates whether this user should be treated as active. '
+        'Unselect this instead of deleting accounts.'
         ),)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -60,7 +58,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     # A string describing the name of the field on the user model
-    #  that is used as the unique identifier
+    # that is used as the unique identifier
     USERNAME_FIELD = 'email'
     # A list of the field names that will be prompted for when
     # creating a user via the createsuperuser management command
@@ -81,10 +79,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         """Return the short name for the user."""
         return self.first_name
-
-    def email_user(self, subject, message, from_email=None, **kwargs):
-        """Send an email to this user."""
-        send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def __str__(self):
 
