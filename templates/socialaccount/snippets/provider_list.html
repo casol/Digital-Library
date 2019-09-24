@@ -4,16 +4,18 @@
 
 {% for provider in socialaccount_providers %}
 {% if provider.id == "openid" %}
+<div class="btn-wrapper text-center"></div>
 {% for brand in provider.get_brands %}
-<div class="btn-wrapper text-center">
+
     <a href="{% provider_login_url provider.id openid=brand.openid_url process=process %}" class="btn btn-neutral btn-icon">
         <span class="btn-inner--icon">
         <img alt="image" src="/static/img/icons/common/{{provider.id}}.svg">
         </span>
         <span class="btn-inner--text">{{brand.name}}</span>
     </a>
-</div>
 {% endfor %}
+</div>
+<div class="btn-wrapper text-center"></div>
 {% endif %}
 <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" class="btn btn-neutral btn-icon">
         <span class="btn-inner--icon">
@@ -21,5 +23,6 @@
         </span>
         <span class="btn-inner--text">{{provider.name}}</span>
     </a>
-</div>    
+ 
 {% endfor %}
+</div>   
