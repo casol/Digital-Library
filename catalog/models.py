@@ -19,6 +19,8 @@ class Book(models.Model):
     genre = models.ManyToManyField('Genre', help_text='Choose a book genre')
     pages = models.IntegerField(blank=True, null=True)
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
+    cover = models.ImageField(upload_to='book_covers/%Y/%m/', default='book_covers/None/no-img.jpg',
+                              blank=True)
     slug = models.SlugField(help_text='A slug is a short label, used in URLs')
 
     def display_genre(self):
@@ -28,7 +30,7 @@ class Book(models.Model):
     display_genre.short_description = 'Genre'
 
     def display_authors(self):
-        return ', '.join(author.last_name for author in self.authors.all())        
+        return ', '.join(author.last_name for author in self.authors.all())   
 
     display_genre.short_description = 'Authors'
 
@@ -70,6 +72,10 @@ class Author(models.Model):
 class Genre(models.Model):
     """Model representing a book genre."""
     category = models.CharField(max_length=200, help_text='Enter a book genre')
+    slug = models.SlugField(max_length=200, help_text='A slug is a short label, used in URLs')
+    
+    class Meta:
+        ordering = ['category']
 
     def __str__(self):
         return self.category
@@ -78,28 +84,31 @@ class Genre(models.Model):
 class BookInstance(models.Model):
     """Model representing a specific copy of a book."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
-                          help_text='Unique ID for this particular book across whole library')
-    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
-    imprint = models.CharField(max_length=200)
-    due_back = models.DateField(null=True, blank=True)
-
-    LOAN_STATUS = (
-        ('m', 'Maintenance'),
-        ('o', 'On loan'),
+                          help_text='Unique ID for this particular book across whole store')
+    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
+    imprint = models.CharField(max_length=200)    
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.PositiveIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    
+    AVAILABILITY_STATUS = (
+        ('u', 'Unavailable'),
+        ('c', 'Coming soon'),
         ('a', 'Available'),
-        ('r', 'Reserved'),
+        ('s', 'Sold out'),
     )
 
     status = models.CharField(
         max_length=1,
-        choices=LOAN_STATUS,
+        choices=AVAILABILITY_STATUS,
         blank=True,
-        default='m',
+        default='u',
         help_text='Book availability',
     )
 
     class Meta:
-        ordering = ['due_back']
+        ordering = ['book']
 
     def __str__(self):
         """String for representing the Model object."""

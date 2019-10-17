@@ -100,11 +100,25 @@
                   </a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item d-none d-lg-block ml-lg-4">
-                  
+
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+                    <i class="ni ni-collection d-lg-none"></i>
+                    <i class="fa fa-user-circle fa-lg"></i>
+                    <span class="nav-link-inner--text">{{ user.email }}</span>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a href="../examples/landing.html" class="dropdown-item">Landing</a>
+                    <a href="../examples/profile.html" class="dropdown-item">Profile</a>
+                    <a href="../examples/login.html" class="dropdown-item">Login</a>
+                    <a href="../examples/register.html" class="dropdown-item">Register</a>
+                  </div>
+                </li>
+
+                <li class="nav-item d-none d-lg-block ml-lg-4">                  
                   <a href="{% url 'account_logout' %}" target="_blank" class="btn btn-primary btn-sm">
                     <span class="btn-inner--icon">
-                      <i class="fa fa-cloud-download mr-2"></i>
+                      <i class="fa fa-sign-out mr-2"></i>
                     </span>
                     <span class="nav-link-inner--text">Log Out</span>
                   </a>    

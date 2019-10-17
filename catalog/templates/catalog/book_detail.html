@@ -1,6 +1,7 @@
 {% extends "catalog/base.html" %}
 
 {% block content %}
+  <img src="{{ book.cover.url }}" alt="img">
   <h1>Title: {{ book.title }}</h1>
   <p><strong>Subtitle:</strong> {{ book.subtitle }}</p>  
   <p><strong>Author:</strong> {% for author in book.authors.all %}<a href="{{ author.get_absolute_url }}">{{ author }}{% if not forloop.last %}, {% endif %}{% endfor %}</a></p> <!-- author detail link not yet defined -->
@@ -13,14 +14,15 @@
   <div style="margin-left:20px;margin-top:20px">
     <h4>Copies</h4>
 
-    {% for copy in book.bookinstance_set.all %}
+    {% for book_instance in book.bookinstance_set.all %}
       <hr>
       <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
       {% if copy.status != 'a' %}
-        <p><strong>Due to be returned:</strong> {{copy.due_back}}</p>
+      <p><strong>{{copy.status}}</strong></p>
+        <p><strong>Price:</strong> {{book_instance.price}} USD</p>
       {% endif %}
-      <p><strong>Imprint:</strong> {{copy.imprint}}</p>
-      <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+      <p><strong>Imprint:</strong> {{book_instance.imprint}}</p>
+      <p class="text-muted"><strong>Id:</strong> {{book_instance.id}}</p>
     {% endfor %}
   </div>
 {% endblock %}

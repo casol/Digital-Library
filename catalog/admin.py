@@ -1,9 +1,12 @@
 from django.contrib import admin
 from catalog.models import Author, Genre, Book, BookInstance, Language
 
-admin.site.register(Genre)
+
 admin.site.register(Language)
 
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):    
+    prepopulated_fields = {"slug": ('category',)}
 
 class BooksInline(admin.TabularInline):
     model = Book.authors.through
@@ -33,14 +36,16 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_filter = ('status', 'due_back')
-    list_display = ('book', 'status', 'due_back', 'id')
+    list_filter = ('status', 'price', 'created')
+    list_display = ('book', 'status', 'stock', 'price', 'id')
+    #readonly_fields = ('created', )
     # Set fieldsets to control the layout of admin
     fieldsets = (
         (None, {
-            'fields': ('book', 'imprint', 'id')
+            'fields': ('book', 'stock', 'price', 'imprint',
+            'id',)
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status',)
         }),
     )

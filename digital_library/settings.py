@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', # required by django-allauth
+    
+    # apps
+    'users.apps.UsersConfig',
+    'catalog.apps.CatalogConfig',
 
     # 3rd party
     'allauth',
@@ -60,10 +64,6 @@ INSTALLED_APPS = [
     # the social providers
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-
-    # apps
-    'users.apps.UsersConfig',
-    'catalog.apps.CatalogConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -147,6 +147,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', # existing backend

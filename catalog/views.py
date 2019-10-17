@@ -46,8 +46,8 @@ def books(request):
 
 def book_detail(request, pk, slug=None):
     """View function for details of the specific book."""
-    book = get_object_or_404(Book, pk=pk)    
-    # if slug in url is not correct let Django   
+    book = get_object_or_404(Book, pk=pk)  
+    # if slug in url is not correct let Django
     # calculate the canonical URL for an object
     if slug != book.slug:
         return redirect(book.get_absolute_url())
