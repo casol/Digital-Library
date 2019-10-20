@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # apps
     'users.apps.UsersConfig',
     'catalog.apps.CatalogConfig',
+    'cart.apps.CartConfig',
 
     # 3rd party
     'allauth',
@@ -168,3 +169,5 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CART_SESSION_ID = 'cart'

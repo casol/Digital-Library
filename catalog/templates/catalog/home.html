@@ -53,67 +53,36 @@
       </section>
       <!-- 1st Hero Variation -->
     </div>
+
     <section class="section section-lg pt-lg-0 mt--200">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="row row-grid">
+              {% for book in latest_books %}
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0">
                   <div class="card-body py-5">
-                    <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                      <i class="ni ni-book-bookmark"></i>
-                    </div>
-                    <h6 class="text-primary text-uppercase">Books:</h6>
-                    <p class="description mt-3">{{ num_books }}</p>
+                     <img src="{{ book.cover.url }}" class="img-center img-fluid" alt="{{book.title}}">
+
+                    <a href="{{book.get_absolute_url}}" class="text-primary text-uppercase">{{book.title}}</a>
+                    <p class="description mt-3">Argon is a great free UI package based on</p>
                     <div>
-                      <span class="badge badge-pill badge-primary">design</span>
-                      <span class="badge badge-pill badge-primary">system</span>
-                      <span class="badge badge-pill badge-primary">creative</span>
+                      {% for genre in book.genre.all|slice:":3" %}
+                      <span class="badge badge-pill badge-primary">{{genre}}</span>
+                      {% endfor %}
                     </div>
-                    <a href="{% url 'books' %}" class="btn btn-primary mt-4">Show All</a>
+                    <a href="#" class="btn btn-primary mt-4">Learn more</a>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="card card-lift--hover shadow border-0">
-                  <div class="card-body py-5">
-                    <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
-                      <i class="ni ni-single-02"></i>
-                    </div>
-                    <h6 class="text-success text-uppercase">Authors</h6>
-                    <p class="description mt-3">{{ num_authors }}</p>
-                    <div>
-                      <span class="badge badge-pill badge-success">business</span>
-                      <span class="badge badge-pill badge-success">vision</span>
-                      <span class="badge badge-pill badge-success">success</span>
-                    </div>
-                    <a href="{% url 'authors' %}" class="btn btn-success mt-4">Check Authors</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="card card-lift--hover shadow border-0">
-                  <div class="card-body py-5">
-                    <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                      <i class="ni ni-books"></i>
-                    </div>
-                    <h6 class="text-warning text-uppercase">Copies</h6>
-                    <p class="description mt-3">{{ num_instances }} Copies available:{{ num_instances_available }}</p>
-                    <div>
-                      <span class="badge badge-pill badge-warning">marketing</span>
-                      <span class="badge badge-pill badge-warning">product</span>
-                      <span class="badge badge-pill badge-warning">launch</span>
-                    </div>
-                    <a href="#" class="btn btn-warning mt-4">Learn more</a>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <section class="section section-lg">
       <div class="container">
         <div class="row row-grid align-items-center">

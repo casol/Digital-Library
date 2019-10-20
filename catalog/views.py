@@ -20,12 +20,16 @@ def home(request):
     
     # The 'all()' is implied by default
     num_authors = Author.objects.count()
+
+    # Get latest published books
+    latest_books = Book.objects.all()[:3]
     
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
+        'latest_books': latest_books,
     }
 
     # Render the HTML template index.html with the data in the context variable
@@ -46,7 +50,7 @@ def books(request):
 
 def book_detail(request, pk, slug=None):
     """View function for details of the specific book."""
-    book = get_object_or_404(Book, pk=pk)  
+    book = get_object_or_404(Book, pk=pk) 
     # if slug in url is not correct let Django
     # calculate the canonical URL for an object
     if slug != book.slug:

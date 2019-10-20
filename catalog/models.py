@@ -22,7 +22,9 @@ class Book(models.Model):
     cover = models.ImageField(upload_to='book_covers/%Y/%m/', default='book_covers/None/no-img.jpg',
                               blank=True)
     slug = models.SlugField(help_text='A slug is a short label, used in URLs')
-
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    
     def display_genre(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
         return ', '.join([genre.category for genre in self.genre.all()])
