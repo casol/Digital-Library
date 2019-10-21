@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
-from catalog.models import Books, BookInstance
+from catalog.models import Book, BookInstance
 
 
 class Cart(object):
@@ -51,9 +51,23 @@ class Cart(object):
         cart = self.cart.copy()
         for book in books:
             cart[str(book.id)]['book'] = book
-        
+        # cart = {'book_id':{'price':11, 'quantity':3}}
+        # cart.values() >>> {'price':11, 'quantity':3}
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
+    def __len__(self):
+        """Count all items in the cart."""
+        return sum(item['quantity'] for item in self.cart.values())
+
+    def get_total_price(self):
+        """Count the total price of the cart."""
+        return sum(Decimal(item['price']) * item['quantity'] for item in
+        self.cart.values())
+
+    def clear(self):
+        """Remove cart from session."""
+        del self.session[settings.CART_SESSION_ID]
+        self.save()
