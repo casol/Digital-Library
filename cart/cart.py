@@ -15,29 +15,29 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
     
-    def add(self, book_instance, quantity=1, update_quantity=False):
+    def add(self, book, quantity=1, update_quantity=False):
         """Add a book to the cart or update quantity"""
 
         # convert id to string - session data use JSON
-        book_instance_id = str(book_instance.id)
-        if book_instance_id not in self.cart:
-            self.cart[book_instance_id] = {'quantity':0,
-                                           'price': str(book_instance.price)}
+        book_id = str(book.id)
+        if book_id not in self.cart:
+            self.cart[book_id] = {'quantity':0,
+                                           'price': str(book.bookinstance_set.get().price)}
         if update_quantity:
-            self.cart[book_instance_id]['quantity'] = quantity
+            self.cart[book_id]['quantity'] = quantity
         else:
-            self.cart[book_instance_id]['quantity'] += quantity
+            self.cart[book_id]['quantity'] += quantity
         self.save()
 
     def save(self):
         """Save modified session """
         self.session.modified = True
                             
-    def remove(self, book_instance):
+    def remove(self, book):
         """Remove a book instance from the cart."""
-        book_instance_id = str(book_instance.id)
-        if book_instance_id in self.cart:
-            del self.cart[book_instance_id]
+        book_id = str(book.id)
+        if book_id in self.cart:
+            del self.cart[book_id]
             self.save()
 
     def __iter__(self):
@@ -45,9 +45,9 @@ class Cart(object):
         Iterate over the books in the cart and get
         the book from the database.
         """
-        book_instance_ids = self.cart.keys()
+        book_ids = self.cart.keys()
         # get book objects and add to the cart
-        books = BookInstance.objects.filter(id__in=book_instance_ids)
+        books = Book.objects.filter(id__in=book_ids)
         cart = self.cart.copy()
         for book in books:
             cart[str(book.id)]['book'] = book

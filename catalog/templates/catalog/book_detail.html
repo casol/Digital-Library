@@ -24,6 +24,14 @@
       {% endif %}
       <p><strong>Imprint:</strong> {{book_instance.imprint}}</p>
       <p class="text-muted"><strong>Id:</strong> {{book_instance.id}}</p>
+
+      <p class="price">${{ book_instance.price }}</p>
+      <form action="{% url "cart:cart_add" book_instance.book.id %}" method="post">
+      {{ cart_product_form }}
+      {% csrf_token %}
+      <input type="submit" value="Add to cart">
+      </form>
+
     {% endfor %}
   </div>
 {% endblock %}

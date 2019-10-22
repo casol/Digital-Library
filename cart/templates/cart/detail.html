@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <h1>Your shopping cart</h1>
-    <table class="cart">
+    <table>
         <thead>
         <tr>
         <th>Image</th>
@@ -15,18 +15,17 @@
         </thead>
             <tbody>
             {% for item in cart %}
-            {% with product=item.product %}
+            {% with book=item.book %}
             <tr>
                 <td>
-                <a href="{{ book.book.get_absolute_url }}">
-                <img src="{% if book.book.image %}{{ book.book.image.url }}
-                {% else %}{% static "img/no_image.png" %}{% endif %}">
+                <a href="{{ book.get_absolute_url }}">
+                <img src="{% if book.cover %}{{ book.cover.url }}
+                {% else %}{% static "img/no_img.jpg" %}{% endif %}" height="82" width="82">
                 </a>
                 </td>
-                <td>{{ book.name }}</td>
+                <td>{{ book }}</td>
                 <td>{{ item.quantity }}</td>
-                <td><a href="{% url "cart:cart_remove" book.id
-                %}">Remove</a></td>
+                <td><a href="{% url "cart:cart_remove" book.id%}">Remove</a></td>
                 <td class="num">${{ item.price }}</td>
                 <td class="num">${{ item.total_price }}</td>
                 </tr>

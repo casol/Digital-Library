@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
 from catalog.models import Book, Author, BookInstance, Genre, Language
-
+from cart.forms import CartAddProductForm
 
 def home(request):
     """View function for home page of site."""
@@ -50,17 +50,19 @@ def books(request):
 
 def book_detail(request, pk, slug=None):
     """View function for details of the specific book."""
-    book = get_object_or_404(Book, pk=pk) 
+    book = get_object_or_404(Book, pk=pk)
     # if slug in url is not correct let Django
     # calculate the canonical URL for an object
     if slug != book.slug:
         return redirect(book.get_absolute_url())
-        
+    
+    cart_product_form = CartAddProductForm()
     return render(
         request,
         'catalog/book_detail.html',
         {
             'book': book,
+            'cart_product_form':cart_product_form,
         }
     )
 
