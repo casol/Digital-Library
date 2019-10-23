@@ -1,46 +1,67 @@
 {% extends "catalog/base.html" %}
+{% load widget_tweaks %}
 {% load static %}
 {% block content %}
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% if cart%}
 <h1>Your shopping cart</h1>
-    <table>
-        <thead>
-        <tr>
-        <th>Image</th>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Remove</th>
-        <th>Unit price</th>
-        <th>Price</th>
-        </tr>
-        </thead>
-            <tbody>
-            {% for item in cart %}
-            {% with book=item.book %}
-            <tr>
-                <td>
-                <a href="{{ book.get_absolute_url }}">
-                <img src="{% if book.cover %}{{ book.cover.url }}
-                {% else %}{% static "img/no_img.jpg" %}{% endif %}" height="82" width="82">
-                </a>
-                </td>
-                <td>{{ book }}</td>
-                <td>{{ item.quantity }}</td>
-                <td><a href="{% url "cart:cart_remove" book.id%}">Remove</a></td>
-                <td class="num">${{ item.price }}</td>
-                <td class="num">${{ item.total_price }}</td>
-                </tr>
-                {% endwith %}
-                {% endfor %}
-                <tr class="total">
-                <td>Total</td>
-                <td colspan="4"></td>
-                <td class="num">${{ cart.get_total_price }}</td>
-                </tr>
-            </tbody>
-    </table>
-<p class="text-right">
-    <a href="{% url "catalog:books" %}" class="button
-    light">Continue shopping</a>
-    <a href="#" class="button">Checkout</a>
-</p>
+{% for item in cart %}
+{% with book=item.book %}
+	<table id="cart" class="table table-hover table-condensed">
+    				<thead>
+						<tr>
+							<th style="width:50%"></th>
+							<th style="width:10%">Price</th>
+                            <th style="width:8%">Quantity</th>
+                            <th style="width:10%"></th>
+							<th style="width:22%" class="text-center">Subtotal</th>							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"><a href="{{ book.get_absolute_url }}"><img src="{{ book.cover.url }}" class="img-responsive" height="100" width="80"/></a></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin">{{ book }}</h4>
+										<p>{{book.description|truncatewords:10}}</p>
+									</div>
+								</div>
+							</td>
+                            <td data-th="Price">${{ item.price }}</td>
+                                <form action="{% url "cart:cart_add" book.id %}" method="post">
+                                    <td data-th="Quantity">
+                                        {{ item.update_quantity_form.quantity|add_class:"form-control text-center" }}								
+                                    </td>
+                                    <td class="actions" data-th="">
+                                        {{ item.update_quantity_form.update }}
+                                        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>																
+                                        {% csrf_token %}                                                                            
+                                    <a href="{% url "cart:cart_remove" book.id%}">Remove</a>                                    
+                                </td>                                    
+                                </form>
+                            
+                            </td>
+
+							<td data-th="Subtotal" class="text-center">${{ item.total_price }}</td>
+
+                        </tr>
+                        {% endwith %}
+                        {% endfor %}
+					</tbody>
+					<tfoot>					
+						<tr>
+							<td><a href="{% url "catalog:books" %}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong>Total ${{ cart.get_total_price }}</strong></td>
+							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+						</tr>
+					</tfoot>
+				</table>
+{% else %}
+<h1>Your Shopping Cart is empty.</h1>
+Your Shopping Cart lives to serve. Give it purpose — fill it with books. If you already have an account, Sign In to see your Cart.
+Continue shopping on the <a href="{% url "catalog:books" %}">homepage</a> 
+{% endif %}
 {% endblock %}

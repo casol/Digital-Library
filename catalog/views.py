@@ -55,7 +55,7 @@ def book_detail(request, pk, slug=None):
     # calculate the canonical URL for an object
     if slug != book.slug:
         return redirect(book.get_absolute_url())
-    
+
     cart_product_form = CartAddProductForm()
     return render(
         request,
