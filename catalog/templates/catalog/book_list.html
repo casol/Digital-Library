@@ -1,49 +1,104 @@
 {% extends "catalog/home.html" %}
 
 {% block content %}
-<section class="section section-lg section-hero section-shaped">
-        <!-- Background circles -->
-        <div class="shape shape-style-1 shape-primary">
-          <span class="span-150"></span>
-          <span class="span-50"></span>
-          <span class="span-50"></span>
-          <span class="span-75"></span>
-          <span class="span-100"></span>
-          <span class="span-75"></span>
-          <span class="span-50"></span>
-          <span class="span-100"></span>
-          <span class="span-50"></span>
-          <span class="span-100"></span>
-        </div>
-        <div class="container shape-container d-flex align-items-center py-lg">
-          <div class="col px-0">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-lg-6 text-center">
-                <img alt="image" src="/static/img/brand/white.png" style="width: 200px;" class="img-fluid">
-                <p class="lead text-white">A beautiful public library.</p>
 
-                
+<div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+        <h1 class="my-4"></h1>        
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">               <i class="fa" aria-hidden="true"></i>
+                      Books
+                    </button>
+                  </h5>
+                </div>
+          
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="list-group">
+                          {% for genre in genres %}
+                          <a href="#" class="list-group-item list-group-item-action">{{genre}}</a>   
+                          {% endfor %}                     
+                      </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <i class="fa" aria-hidden="true"></i>
+                      Popular in Books
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <i class="fa" aria-hidden="true"></i>
+                      Author
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="list-group">
+                        {% for author in authors %}
+                        <a href="{{ author.get_absolute_url }}" class="list-group-item list-group-item-action">{{author}}</a>   
+                        {% endfor %}                     
+                    </div>
+                </div>
+              </div>
+            </div>
+          
+          
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+
+        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+
+        </div>
+
+        <div class="row">
+          {% for book in book_list %}
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="{{book.get_absolute_url}}"><img class="card-img-top" src="{{ book.cover.url }}" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{{book.get_absolute_url}}">{{ book.title }}</a>
+                </h4>
+                {% for book_instance in book.bookinstance_set.all %}
+                <h5>${{ book_instance.price}}</h5>
+                {% endfor %}
+                <p class="card-text">{{book.description|truncatewords:10}}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-        <!-- SVG separator -->
-        <div class="separator separator-bottom separator-skew zindex-100">
-          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-          </svg>
-        </div>
-      </section>
-    <h1>Book List</h1>
-    {% if book_list %}
-    <ul>
-        {% for book in book_list %}
-        <li>
-            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({% for author in book.authors.all %}<a href="{{ author.get_absolute_url }}">{{ author }}{% if not forloop.last %}, {% endif %}</a> {% endfor %})
-        </li>
-    </ul>
-        {% endfor %}
-    {% else %}
-        <p>the library has no books yet.</p>
-    {% endif %}
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
 {% endblock %}

@@ -1,146 +1,45 @@
-<header class="header-global">
-        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
-          <div class="container">
-            <a class="navbar-brand mr-lg-5" href="../index.html">
-              <img src="/static/img/brand/white.png" alt="brand">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url "catalog:home"  %}">Digital BookStore</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navbar_global">
-              <div class="navbar-collapse-header">
-                <div class="row">
-                  <div class="col-6 collapse-brand">
-                    <a href="../index.html">
-                      <img src="/static/img/brand/blue.png" alt="brand">
-                    </a>
-                  </div>
-                  <div class="col-6 collapse-close">
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                      <span></span>
-                      <span></span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                    <i class="ni ni-ui-04 d-lg-none"></i>
-                    <span class="nav-link-inner--text">Components</span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-xl">
-                    <div class="dropdown-menu-inner">
-                      <a href="https://demos.creative-tim.com/argon-design-system/docs/getting-started/overview.html" class="media d-flex align-items-center">
-                        <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                          <i class="ni ni-spaceship"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="heading text-primary mb-md-1">Getting started</h6>
-                          <p class="description d-none d-md-inline-block mb-0">Learn how to use Argon compiling Scss, change brand colors and more.</p>
-                        </div>
-                      </a>
-                      <a href="https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html" class="media d-flex align-items-center">
-                        <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                          <i class="ni ni-palette"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="heading text-primary mb-md-1">Foundation</h6>
-                          <p class="description d-none d-md-inline-block mb-0">Learn more about colors, typography, icons and the grid system we used for Argon.</p>
-                        </div>
-                      </a>
-                      <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="media d-flex align-items-center">
-                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                          <i class="ni ni-ui-04"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h5 class="heading text-warning mb-md-1">Components</h5>
-                          <p class="description d-none d-md-inline-block mb-0">Browse our 50 beautiful handcrafted components offered in the Free version.</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                    <i class="ni ni-collection d-lg-none"></i>
-                    <span class="nav-link-inner--text">Examples</span>
-                  </a>
-                  <div class="dropdown-menu">
-                    <a href="../examples/landing.html" class="dropdown-item">Landing</a>
-                    <a href="../examples/profile.html" class="dropdown-item">Profile</a>
-                    <a href="../examples/login.html" class="dropdown-item">Login</a>
-                    <a href="../examples/register.html" class="dropdown-item">Register</a>
-                  </div>
-                </li>
-              </ul>
-              <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                <li class="nav-item">
-                  <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
-                    <i class="fa fa-facebook-square"></i>
-                    <span class="nav-link-inner--text d-lg-none">Facebook</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
-                    <i class="fa fa-instagram"></i>
-                    <span class="nav-link-inner--text d-lg-none">Instagram</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
-                    <i class="fa fa-twitter-square"></i>
-                    <span class="nav-link-inner--text d-lg-none">Twitter</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav-link-icon" href="https://github.com/creativetimofficial/argon-design-system" target="_blank" data-toggle="tooltip" title="Source code Github">
-                    <i class="fa fa-github"></i>
-                    <span class="nav-link-inner--text d-lg-none">Github</span>
-                  </a>
-                </li>
-                {% if user.is_authenticated %}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          {% with total_items=cart|length %}
+          <li class="nav-item">
+            <a href="{% url "cart:cart_detail" %}"><span class="fa-stack fa-1x has-badge" data-count="{{ total_items }}">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>             
+            </span></a>
+          </li>          
+          {% endwith %}   
 
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                    <i class="ni ni-collection d-lg-none"></i>
-                    <i class="fa fa-user-circle fa-lg"></i>
-                    <span class="nav-link-inner--text">{{ user.email }}</span>
-                  </a>
-                  <div class="dropdown-menu">
-                    <a href="../examples/landing.html" class="dropdown-item">Landing</a>
-                    <a href="../examples/profile.html" class="dropdown-item">Profile</a>
-                    <a href="../examples/login.html" class="dropdown-item">Login</a>
-                    <a href="../examples/register.html" class="dropdown-item">Register</a>
-                  </div>
-                </li>
-
-                <li class="nav-item d-none d-lg-block ml-lg-4">                  
-                  <a href="{% url 'account_logout' %}" target="_blank" class="btn btn-primary btn-sm">
-                    <span class="btn-inner--icon">
-                      <i class="fa fa-sign-out mr-2"></i>
-                    </span>
-                    <span class="nav-link-inner--text">Log Out</span>
-                  </a>    
-                {% else %}
-                <li class="nav-item d-none d-lg-block ml-lg-4">
-                  
-                    <a href="{% url 'account_login' %}" target="_blank" class="btn btn-primary btn-sm">
-                      <span class="btn-inner--icon">
-                        <i class="fa fa-sign-in mr-2"></i>
-                      </span>
-                      <span class="nav-link-inner--text">Log IN</span>
-                    </a> 
-                    <a href="{% url 'account_signup' %}" target="_blank" class="btn btn-secondary btn-sm">
-                        <span class="btn-inner--icon">
-                          <i class="fa fa-user-plus mr-2"></i>
-                        </span>
-                        <span class="nav-link-inner--text">Sign Up</span>
-                      </a>                           
-                </li>
-                {% endif %}
-              </ul>
-            </div>
-          </div>
-        </nav>
-</header>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{ user.email }}</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}"><span class="fas fa-sign-in-alt"></span> Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}"><span class="fas fa-user"></span> Sign Up</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>  

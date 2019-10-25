@@ -165,8 +165,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
-LOGIN_REDIRECT_URL = 'home'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'catalog:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'catalog:home'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
