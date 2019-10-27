@@ -1,6 +1,7 @@
-{% extends "catalog/base.html" %}
+{% extends "catalog/home.html" %}
 
 {% block content %}
+<div class="col-lg-9">
   <h1>{{ author }}</h1>
   <h3>Books</h3> 
     <ul>
@@ -11,5 +12,6 @@
             </li>
         {% endfor %}
     </ul>
+</div>
 
 {% endblock %}

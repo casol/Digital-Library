@@ -39,13 +39,20 @@
     {% include "catalog/top_navigation.html" %}
 
   {% endblock top_navigation %}
-    
-  {% block content %}
 
-    <!-- {{ content }} -->
+  <div class="container"> 
+      <div class="row">
+          {% block sidebar %}
+          {% include "catalog/sidebar.html" %}
+          {% endblock %}
+              {% block content %}
+              
+                <!-- {{ content }} -->
 
-  {% endblock content %}
-  
+              {% endblock content %}
+        </div>
+  </div>
+
   {% block footer %}
 
     {% include "catalog/footer.html" %}

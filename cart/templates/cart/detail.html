@@ -1,8 +1,8 @@
-{% extends "catalog/base.html" %}
+{% extends "catalog/home.html" %}
 {% load widget_tweaks %}
 {% load static %}
 {% block content %}
-
+<div class="col-lg-9">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 {% if cart%}
 <h1>Your shopping cart</h1>
@@ -65,3 +65,4 @@ Your Shopping Cart lives to serve. Give it purpose — fill it with books. If yo
 Continue shopping on the <a href="{% url "catalog:books" %}">homepage</a> 
 {% endif %}
 {% endblock %}
+</div>
