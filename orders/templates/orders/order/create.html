@@ -1,28 +1,79 @@
 
 {% extends "catalog/home.html" %}
+{% load widget_tweaks %}
 {% block title %}
 Checkout
 {% endblock %}
 {% block content %}
 <div class="col-lg-9">
-<h1>Checkout</h1>
-    <div class="order-info">
-    <h3>Your order</h3>
-        <ul>
-        {% for item in cart %}
-            <li>
-            {{ item.quantity }}x {{ item.book.title }}
-            <span>${{ item.total_price }}</span>
-        </li>
-        {% endfor %}
-        </ul>
-    <p>Total: ${{ cart.get_total_price }}</p>
-    </div>
-    <form action="." method="post" class="order-form">
-     
-        {{ form.as_p }}
-        <p><input type="submit" value="Place order"></p>
-    {% csrf_token %}
+    <h1>Checkout</h1>
+        <div class="order-info">
+        <h3>Your order</h3>
+            <ul>
+            {% for item in cart %}
+                <li>
+                {{ item.quantity }}x {{ item.book.title }}
+                <span>${{ item.total_price }}</span>
+            </li>
+            {% endfor %}
+            </ul>
+        <p>Total: ${{ cart.get_total_price }}</p>
+        </div>   
+    <form action="." method="post">
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="{{form.order_first_name.name}}">{{form.order_first_name.label}}</label>
+            {{form.order_first_name|add_class:'form-control'|attr:"placeholder:First Name"}}
+            {{form.non_field_errors}}
+        </div>
+        <div class="form-group col-md-6">
+            <label for="{{form.order_last_name.name}}">{{form.order_last_name.label}}</label>
+            {{form.order_last_name|add_class:'form-control'|attr:"placeholder:Last Name"}}
+            {{form.non_field_errors}}
+        </div>
+        </div>
+        <div class="form-group">
+                <label for="{{form.address.name}}">{{form.address.label}}</label>
+                {{form.address|add_class:'form-control'|attr:"placeholder:1234 Main St"}}
+                {{form.non_field_errors}}
+        </div>
+        <div class="form-group">
+                <label for="{{form.address2.name}}">{{form.address2.label}}</label>
+                {{form.address2|add_class:'form-control'|attr:"placeholder:Apartment, studio, or floor"}}
+                {{form.non_field_errors}}
+        <div class="form-row">
+        <div class="form-group col-md-6">
+                <label for="{{form.city.name}}">{{form.city.label}}</label>
+                {{form.city|add_class:'form-control'}}
+                {{form.non_field_errors}}
+        </div>
+        <div class="form-group col-md-4">
+                <label for="{{form.state.name}}">{{form.state.label}}</label>
+                {{form.state|add_class:'form-control'}}
+                {{form.non_field_errors}}
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+                <label for="{{form.postal_code.name}}">{{form.postal_code.label}}</label>
+                {{form.postal_code|add_class:'form-control'}}
+                {{form.non_field_errors}}
+        </div>
+        </div>
+        <div class="form-row">
+                <div class="form-group col-md-6">
+                <label for="{{form.phone_number.name}}">{{form.phone_number.label}}</label>
+                {{form.phone_number|add_class:'form-control'}}
+                {{form.non_field_errors}}
+                </div>
+                <div class="form-group col-md-6">
+                <label for="{{form.comment.name}}">{{form.comment.label}}</label>
+                {{form.comment|add_class:'form-control'|attr:"placeholder:Additional Comments"}}
+                {{form.non_field_errors}}
+                </div>
+            </div>
+        <button type="submit" class="btn btn-primary">Place order</button>    
     </form>
 </div>
 {% endblock %}

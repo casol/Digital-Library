@@ -7,11 +7,14 @@ from catalog.models import Book
 class Order(models.Model):
     """Model representing a customer detail information."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=250)
+    order_first_name = models.CharField(max_length=100)
+    order_last_name = models.CharField(max_length=100)
+    address = models.CharField(max_length=150)
+    address2 = models.CharField(max_length=150, blank=True)
     postal_code = models.CharField(max_length=16)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    comment = models.CharField(max_length=250)
+    comment = models.CharField(max_length=250, blank=True)
     phone_number = models.CharField(max_length=12)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
