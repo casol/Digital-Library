@@ -1,3 +1,4 @@
+{% load sidebar_tags %}
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
@@ -35,15 +36,15 @@
 <body>
   {% block body %}
   {% block top_navigation %}
-
+    
     {% include "catalog/top_navigation.html" %}
 
   {% endblock top_navigation %}
-
+  
   <div class="container"> 
       <div class="row">
-          {% block sidebar %}
-          {% include "catalog/sidebar.html" %}
+          {% block sidebar %}          
+              {% sidebar %}
           {% endblock %}
               {% block content %}
               

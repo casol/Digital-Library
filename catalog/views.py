@@ -23,12 +23,6 @@ def home(request):
 
     # Get latest published books
     latest_books = Book.objects.all()[:6]
-
-    # Get list of all genres
-    genres = Genre.objects.all()
-
-    # Get list of all authors
-    authors = Author.objects.all()
     
     context = {
         'num_books': num_books,
@@ -36,8 +30,6 @@ def home(request):
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
         'latest_books': latest_books,
-        'genres': genres,
-        'authors':authors,
     }
 
     # Render the HTML template index.html with the data in the context variable

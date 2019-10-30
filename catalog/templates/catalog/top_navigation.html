@@ -22,11 +22,21 @@
               <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>             
             </span></a>
           </li>          
-          {% endwith %}   
+          {% endwith %}
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">{{ user.email }}</a>
-          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+              <i class="ni ni-collection d-lg-none"></i>
+              <span class="nav-link-inner--text">{{ user.email }}</span>
+            </a>
+            <div class="dropdown-menu">              
+              <a href="../examples/profile.html" class="dropdown-item">Your Profile</a>
+              <a href="../examples/login.html" class="dropdown-item">Your Orders</a>
+              <a href="../examples/register.html" class="dropdown-item">Help</a>
+              <a href="{% url 'account_logout' %}" class="dropdown-item">Log Out</a>
+            </div>
+          </li> 
+
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a>

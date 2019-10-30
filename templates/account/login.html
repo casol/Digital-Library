@@ -1,4 +1,4 @@
-
+{% extends "catalog/index.html" %}
 {% load widget_tweaks %}
 {% load i18n %}
 {% load account socialaccount %}
@@ -6,19 +6,7 @@
 {% block title %}Login | Digital Library{% endblock %}
 
 {% block content %}
-  <main>
-    {% get_providers as socialaccount_providers %}  
-    <section class="section section-shaped section-lg">
-      <div class="shape shape-style-1 bg-gradient-default">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+
       <div class="container pt-lg-md">
         <div class="row justify-content-center">
           <div class="col-lg-5">
@@ -82,6 +70,5 @@
           </div>
         </div>
       </div>
-    </section>
-  </main>
+
 {% endblock content %}
