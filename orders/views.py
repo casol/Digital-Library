@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import OrederBook
+from .models import OrederBook, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from users.models import User
@@ -32,3 +32,17 @@ def order_create(request):
         form = OrderCreateForm(initial=data)
     return render(request, 'orders/order/create.html',
                   {'cart':cart, 'form':form})
+
+@login_required
+def user_orders(request):
+    """Render the fulfilled orders for the current user."""
+    user = User.objects.get(email=request.user)
+    user_order = Order.objects.filter(user=user)
+
+    return render(
+                 request,
+                 '/orders/test.html',
+                 {
+                     'user_order': user_order
+                 }
+            )

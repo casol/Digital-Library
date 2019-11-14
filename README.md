@@ -57,6 +57,6 @@ $ python manage.py runserver
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/casol/) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/casol/Digital-Library/blob/master/LICENSE.md) file for details
 
 ## Acknowledgments
