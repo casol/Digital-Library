@@ -32,7 +32,7 @@ class Book(models.Model):
     display_genre.short_description = 'Genre'
 
     def display_authors(self):
-        return ', '.join(author.last_name for author in self.authors.all())   
+        return ', '.join(author.last_name for author in self.authors.all()) 
 
     display_genre.short_description = 'Authors'
 
@@ -89,7 +89,7 @@ class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
                           help_text='Unique ID for this particular book across whole store')
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
-    imprint = models.CharField(max_length=200)    
+    imprint = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     created = models.DateTimeField(auto_now_add=True)

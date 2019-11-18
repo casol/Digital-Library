@@ -16,3 +16,4 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderBookInline]
 
+ 

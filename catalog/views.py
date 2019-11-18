@@ -83,9 +83,9 @@ def author_detail(request, pk, slug=None):
     """View function for author details."""
 
     author = get_object_or_404(Author, pk=pk)
-    books = author.book_set.all()
+    author_books = author.book_set.all()
     
-    # if slug in url is not correct let Django   
+    # if slug in url is not correct let Django
     # calculate the canonical URL for an object
     if slug != author.slug:
         return redirect(author.get_absolute_url())
@@ -94,6 +94,6 @@ def author_detail(request, pk, slug=None):
         'catalog/author_detail.html',
         {
             'author': author,
-            'books': books,
+            'author_books': author_books,
         }
     )
