@@ -92,9 +92,19 @@ class BookModelTest(TestCase):
         self.assertEquals(max_length, 100)
         
     def test_get_absolute_url(self):
-        book = Book.objects.get(id=1)       
+        book = Book.objects.get(id=1)    
         absolute_url = f'/book/{book.id}/{book.slug}'
         self.assertEqual(book.get_absolute_url(), absolute_url)
+
+    def test_genre_display_string(self):
+        book = Book.objects.get(id=1)
+        genre_string = ', '.join([g.category for g in book.genre.all()])
+        self.assertEqual(genre_string, 'Novel')
+
+    def test_author_display_string(self):
+        book = Book.objects.get(id=1)
+        genre_string = ', '.join([g.last_name for g in book.authors.all()])
+        self.assertEqual(genre_string, 'Rambo')
 
 
 class AuthorModelTest(TestCase):

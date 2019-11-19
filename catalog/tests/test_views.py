@@ -177,8 +177,9 @@ class AuthorDetailViewTest(TestCase):
         # calculate the canonical URL for an object
         author = Author.objects.get(id=1)
         response = self.client.get(reverse('catalog:author_detail', args=[str(author.id)]))
-        # expect http redirect code 302
+        # expect http redirect code 302        
         self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, f'/author/{author.id}/{author.slug}')
 
     def test_view_url_accessible_by_incorrect_slug(self):
         # if slug in url is not correct let Django
@@ -187,7 +188,8 @@ class AuthorDetailViewTest(TestCase):
         response = self.client.get(reverse('catalog:author_detail', args=[str(author.id), 'incorrect_slug']))
         # expect http redirect code 302
         self.assertEqual(response.status_code, 302)
-    
+        self.assertRedirects(response, f'/author/{author.id}/{author.slug}')
+
     def test_view_uses_correct_template(self):
         author = Author.objects.get(id=1)
         response = self.client.get(reverse('catalog:author_detail', args=[str(author.id), author.slug]))
@@ -203,6 +205,6 @@ class AuthorDetailViewTest(TestCase):
     def test_view_books_associated_with_author(self):
         author = Author.objects.get(id=1)
         # query set
-        books_author = author.book_set.all()    
-        response = response = self.client.get(reverse('catalog:author_detail', args=[str(author.id), author.slug]))        
-        self.assertTrue(response.context['author_books'] == books_author)
+        books_author = author.book_set.all().first()
+        response = response = self.client.get(reverse('catalog:author_detail', args=[str(author.id), author.slug]))
+        self.assertEqual(response.context['author_books'].first(), books_author)

@@ -32,7 +32,7 @@ class Book(models.Model):
     display_genre.short_description = 'Genre'
 
     def display_authors(self):
-        return ', '.join(author.last_name for author in self.authors.all()) 
+        return ', '.join(author.last_name for author in self.authors.all())
 
     display_genre.short_description = 'Authors'
 

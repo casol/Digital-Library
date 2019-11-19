@@ -6,6 +6,7 @@ from catalog.models import Book
 
 class Order(models.Model):
     """Model representing a customer detail information."""
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     order_first_name = models.CharField(max_length=100)
     order_last_name = models.CharField(max_length=100)
@@ -31,10 +32,11 @@ class Order(models.Model):
 
 class OrederBook(models.Model):
     """Model allows to store the book and quantity with price."""
+
     order = models.ForeignKey(Order, related_name='books',
                               on_delete=models.CASCADE)
     book = models.ForeignKey(Book, related_name='order_book',
-                             on_delete=models.CASCADE)                      
+                             on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 

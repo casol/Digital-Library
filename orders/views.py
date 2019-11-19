@@ -35,14 +35,14 @@ def order_create(request):
 
 @login_required
 def user_orders(request):
-    """Render the fulfilled orders for the current user."""
-    user = User.objects.get(email=request.user)
-    user_order = Order.objects.filter(user=user)
+    """Render orders for the current user."""
 
+    user_order = Order.objects.filter(user=User.objects.get(email=request.user))
+    #user_order.order_set.all()    
     return render(
-                 request,
-                 '/orders/test.html',
-                 {
-                     'user_order': user_order
-                 }
+                request,
+                'orders/created.html',
+                {
+                    'user_order': user_order
+                }
             )
