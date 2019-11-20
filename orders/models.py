@@ -30,7 +30,7 @@ class Order(models.Model):
     def get_total_cost(sef):
         return sum(book.get_cost() for book in self.books.all())
 
-class OrederBook(models.Model):
+class OrderBook(models.Model):
     """Model allows to store the book and quantity with price."""
 
     order = models.ForeignKey(Order, related_name='books',

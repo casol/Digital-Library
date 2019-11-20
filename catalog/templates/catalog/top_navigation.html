@@ -31,8 +31,7 @@
             </a>
             <div class="dropdown-menu">              
               <a href="../examples/profile.html" class="dropdown-item">Your Profile</a>
-              <a href="../examples/login.html" class="dropdown-item">Your Orders</a>
-              <a href="../examples/register.html" class="dropdown-item">Help</a>
+              <a href="{% url 'orders:user_orders' %}" class="dropdown-item">Your Orders</a>
               <a href="{% url 'account_logout' %}" class="dropdown-item">Log Out</a>
             </div>
           </li> 

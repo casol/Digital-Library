@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from .models import Order, OrederBook
+from .models import Order, OrderBook
 from users.models import User
 
 
 
 class OrderBookInline(admin.TabularInline):
-    model = OrederBook
+    model = OrderBook
     raw_id_fields = ['book']
 
 @admin.register(Order)
