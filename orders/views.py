@@ -4,11 +4,13 @@ from .models import OrderBook, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from users.models import User
+from .tasks import order_created
 
 
 @login_required
 def order_create(request):
     """Render the form and create a new order."""
+
     cart = Cart(request)
     # get logged user and declare the initial values
     user = User.objects.get(email=request.user)
@@ -22,10 +24,12 @@ def order_create(request):
             order = form.save()
             for book in cart:
                 OrderBook.objects.create(order=order,
-                                          book=book['book'],
-                                          price=book['price'],
-                                          quantity=book['quantity'])
+                                         book=book['book'],
+                                         price=book['price'],
+                                         quantity=book['quantity'])
             cart.clear()
+            # launch asynchronous task
+            order_created.delay(order.id, user.email)
             return render(request, 'orders/order/created.html',
                           {'order': order})
     else:
