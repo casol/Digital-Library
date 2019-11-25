@@ -27,7 +27,11 @@ class Order(models.Model):
     def __str__(self):
         return 'Order {}'.format(self.id)
     
-    def get_total_cost(sef):
+    def get_total_cost(self):
+        """
+        Get total cost for all the books in the order.
+        OrderBook.objects.all()
+        """
         return sum(book.get_cost() for book in self.books.all())
 
 class OrderBook(models.Model):

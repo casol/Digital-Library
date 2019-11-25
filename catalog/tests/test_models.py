@@ -7,6 +7,8 @@ from django.template.defaultfilters import slugify
 from catalog.models import Author, Book, Genre, Language, BookInstance
 
 class BookModelTest(TestCase):
+    """Test book model."""
+
     @classmethod
     def setUpTestData(cls):
         """Setup a book with related objects."""
@@ -15,9 +17,9 @@ class BookModelTest(TestCase):
         Language.objects.create(name='English')
         language = Language.objects.get(id=1)
         book = Book.objects.create(title='TestBook',
-        subtitle='The best book for testing', publisher='BookPrint',
-        description='TestTestTest', published_date=date.today(),
-        isbn='978-1541392304', pages=233, language=language, slug=slugify('TestBook'))
+                                   subtitle='The best book for testing', publisher='BookPrint',
+                                   description='TestTestTest', published_date=date.today(),
+                                   isbn='978-1541392304', pages=233, language=language, slug=slugify('TestBook'))
         book.authors.add(author)
         book.genre.add(genre)
 
@@ -92,7 +94,7 @@ class BookModelTest(TestCase):
         self.assertEquals(max_length, 100)
         
     def test_get_absolute_url(self):
-        book = Book.objects.get(id=1)    
+        book = Book.objects.get(id=1)
         absolute_url = f'/book/{book.id}/{book.slug}'
         self.assertEqual(book.get_absolute_url(), absolute_url)
 
