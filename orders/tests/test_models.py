@@ -139,11 +139,12 @@ class OrderBookTestClass(TestCase):
         order = Order.objects.create(user=user, order_first_name=user.first_name, order_last_name=user.last_name, address='Test Street 12/32',
                                      address2='test/test 12&1";', postal_code='9210', city='Test City', state="TestState",
                                      comment='test', phone_number='648234181', paid=False)
-        # set up book for testing
+        # Set up book for testing
         author = Author.objects.create(first_name='John', last_name='Rambo')
         genre = Genre.objects.create(category='Novel')
         Language.objects.create(name='English')
         language = Language.objects.get(id=1)
+        # Create 4 book objects
         for book_id in range(1, 5):
             book = Book.objects.create(title=f'TestBook{book_id}', subtitle=f'The best book for testing{book_id}',
                 publisher=f'BookPrint{book_id}', description=f'{book_id}TestTestTest',
@@ -151,9 +152,8 @@ class OrderBookTestClass(TestCase):
                 pages=233, language=language, slug=slugify(f'TestBook{book_id}'))
             book.authors.add(author)
             book.genre.add(genre)
-        
+        # Add books to the order
         for book_object in Book.objects.all():
-
             OrderBook.objects.create(order=order, book=book_object, price=float(random.randint(1000, 2000))/100, quantity=random.randint(1, 4))
     
     def test_order_label(self):

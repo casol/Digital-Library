@@ -8,6 +8,7 @@ class Order(models.Model):
     """Model representing a customer detail information."""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    braintree_id = models.CharField(max_length=150, blank=True)
     order_first_name = models.CharField(max_length=100)
     order_last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=150)

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'catalog.apps.CatalogConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 
     # 3rd party
     'allauth',
@@ -173,3 +174,17 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'catalog:home'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CART_SESSION_ID = 'cart'
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = get_env_variable('BRAINTREE_MERCHANT_ID')
+BRAINTREE_PUBLIC_KEY = get_env_variable('BRAINTREE_PUBLIC_KEY')
+BRAINTREE_PRIVATE_KEY = get_env_variable('BRAINTREE_PRIVATE_KEY')
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
